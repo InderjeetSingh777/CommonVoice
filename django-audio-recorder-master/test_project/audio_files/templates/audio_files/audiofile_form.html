@@ -1,0 +1,66 @@
+{%load static %}
+<!DOCTYPE html>
+{% load bootstrap3 %}
+<html{% if request.LANGUAGE_CODE %} lang="{{ request.LANGUAGE_CODE }}"{% endif %}>
+
+<head>
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge" /><![endif]-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{% static 'HR2/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'HR2/css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'HR2/css/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'HR2/css/owl.carousel.css' %}" rel="stylesheet">
+    <link href="{% static 'HR2/css/owl.transitions.css' %}" rel="stylesheet">
+    <link href="{% static 'HR2/css/prettyPhoto.css' %}" rel="stylesheet">
+    <link href="{% static 'HR2/css/main.css' %}" rel="stylesheet">
+    <link href="{% static 'HR2/css/styles.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <title>Audio Recorder</title>
+    {% bootstrap_css %}
+    {% load staticfiles %}
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    {% block head %} {% endblock %}
+</head>
+
+<body>
+
+{% for message in messages %}
+    <div class="{{ message|bootstrap_message_classes }} alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&#215;</button>
+        {{ message }}
+    </div>
+{% endfor %}
+
+<center><h1>Record following lines in your voice one-by-one :
+</h1></center>
+<div class="container">
+    
+    <hr>
+    <ol>
+        <h2>
+    <li>She was always being deceived and imposed upon.</li>
+    <li>Eventually these two roads will converge into one.</li>
+    <li>Get him to distribute prizes.</li>
+    <li>I can’t get over it.</li>
+</h2>
+</ol>
+    {% csrf_token %}
+    {% bootstrap_form form %}
+</div>
+
+{% bootstrap_javascript jquery=True %}
+{{ form.media }}
+
+
+</body>
+
+</html>

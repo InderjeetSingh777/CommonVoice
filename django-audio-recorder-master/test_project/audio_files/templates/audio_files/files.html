@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Audio dataset</title>
+</head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{% static 'HR2/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'HR2/css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'HR2/css/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'HR2/css/owl.carousel.css' %}" rel="stylesheet">
+    <link href="{% static 'HR2/css/owl.transitions.css' %}" rel="stylesheet">
+    <link href="{% static 'HR2/css/prettyPhoto.css' %}" rel="stylesheet">
+    <link href="{% static 'HR2/css/main.css' %}" rel="stylesheet">
+    <link href="{% static 'HR2/css/styles.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<body>
+<div class="container">
+<div class="jumbotron">
+	<center><h1> Listen audio and help us validate it.</h1></center>
+{% for obj in file %}
+
+<h2>{{obj.description}}</h2>
+<audio controls>
+	
+  <source src="{{obj.audio_file.url}}" type="audio/ogg">
+  Your browser does not support the audio element.
+</audio>
+<h3>Is this Audio correct?</h3><br/>
+<a href="{% url "updateYes" pk=obj.id %}">YES</a>
+<a href="{% url "updateNo" pk=obj.id %}">No</a>
+<br/>
+{% endfor %}
+</div>
+</div>
+</body>
+</html>

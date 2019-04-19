@@ -1,0 +1,10 @@
+django==1.8
+djangorestframework==3.4
+pillow
+pytest
+pytest-django
+splinter
+django-extensions
+django-bootstrap3
+pep8
+autopep8
